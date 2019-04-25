@@ -1,77 +1,72 @@
 package com.example.java;
 
 public class Burger {
-    private String breadRollType;
+    private String name;
     private String meat;
-    private boolean lettuce;
-    private boolean tomato;
-    private boolean carrot;
-    private boolean cheese;
     private double price;
+    private String breadRollType;
 
-    public Burger(String breadRollType, String meat) {
-        this.breadRollType = breadRollType;
+    private String addition1Name;
+    private double additon1Price;
+
+    private String addition2Name;
+    private double additon2Price;
+
+    private String addition3Name;
+    private double additon3Price;
+
+    private String addition4Name;
+    private double additon4Price;
+
+
+
+    public Burger(String name, String meat, double price, String breadRollType) {
+        this.name = name;
         this.meat = meat;
-        this.price = 7.50;
-        this.lettuce = false;
-        this.tomato = false;
-        this.carrot = false;
-        this.cheese = false;
-    }
-
-    public boolean isLettuce() {
-        return lettuce;
-    }
-
-    public void setLettuce(boolean lettuce) {
-        this.lettuce = lettuce;
-        if (lettuce) {
-            this.price = this.price + .50;
-            System.out.println("Lettuce added for .50, new price = " + this.price);
-        }
-    }
-
-    public boolean isTomato() {
-        return tomato;
-    }
-
-    public void setTomato(boolean tomato) {
-        this.tomato = tomato;
-        if (tomato) {
-            this.price = this.price + .75;
-            System.out.println("Tomator added for .75, new price = " + this.price);
-        }
-    }
-
-    public boolean isCarrot() {
-        return carrot;
-    }
-
-    public void setCarrot(boolean carrot) {
-        this.carrot = carrot;
-        if (carrot) {
-            this.price = this.price + .25;
-            System.out.println("Carrot added for .25, new price = " + this.price);
-        }
-    }
-
-    public boolean isCheese() {
-        return cheese;
-    }
-
-    public void setCheese(boolean cheese) {
-        this.cheese = cheese;
-        if (cheese) {
-            this.price = this.price + 1.00;
-            System.out.println("Cheese added for 1.00, new price = " + this.price);
-        }
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
         this.price = price;
+        this.breadRollType = breadRollType;
+    }
+
+    public void addHamburgerAddition1 (String name, double price) {
+        this.addition1Name = name;
+        this.additon1Price = price;
+    }
+
+    public void addHamburgerAddition2 (String name, double price) {
+        this.addition2Name = name;
+        this.additon2Price = price;
+    }
+
+    public void addHamburgerAddition3 (String name, double price) {
+        this.addition3Name = name;
+        this.additon3Price = price;
+    }
+
+    public void addHamburgerAddition4 (String name, double price) {
+        this.addition4Name = name;
+        this.additon4Price = price;
+    }
+
+    public double itemizeHamburger() {
+        double hamburgerPrice = this.price;
+        System.out.println(this.name + " burger" + " on a " + this.breadRollType + " roll "
+                            + "with " + this.meat + ", price is $" + this.price + ".");
+        if(this.addition1Name != null) {
+            hamburgerPrice += this.additon1Price;
+            System.out.println("Added " + this.addition1Name + " for an extra " + this.additon1Price);
+        }
+        if(this.addition2Name != null) {
+            hamburgerPrice += this.additon2Price;
+            System.out.println("Added " + this.addition2Name + " for an extra " + this.additon2Price);
+        }
+        if(this.addition3Name != null) {
+            hamburgerPrice += this.additon3Price;
+            System.out.println("Added " + this.addition3Name + " for an extra " + this.additon3Price);
+        }
+        if(this.addition4Name != null) {
+            hamburgerPrice += this.additon4Price;
+            System.out.println("Added " + this.addition4Name + " for an extra " + this.additon4Price);
+        }
+        return hamburgerPrice;
     }
 }

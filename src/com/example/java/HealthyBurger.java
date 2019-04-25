@@ -1,37 +1,37 @@
 package com.example.java;
 
 public class HealthyBurger extends Burger {
-    private String name;
-    private boolean alfalfaSprouts;
-    private boolean tofu;
-    private double price = 8.00;
+    private String healthyExtra1Name;
+    private double healthyExtra1Price;
 
-    public HealthyBurger() {
-        super("Brown Rye", "Black Bean");
-        this.name = "Vegan Delight";
+    private String healthyExtra2Name;
+    private double healthyExtra2Price;
+
+    public HealthyBurger(String meat, double price) {
+        super("Healthy", meat, price, "Brown Rye");
     }
 
-    public boolean isAlfalfaSprouts() {
-        return alfalfaSprouts;
+    public void addHealthyAddition1(String name, double price) {
+        this.healthyExtra1Name = name;
+        this.healthyExtra1Price = price;
     }
 
-    public void setAlfalfaSprouts(boolean alfalfaSprouts) {
-        this.alfalfaSprouts = alfalfaSprouts;
-        if (alfalfaSprouts) {
-            this.price = this.price + .35;
-            System.out.println("Alfalfa sprouts added, new price = " + this.price);
+    public void addHealthyAddition2(String name, double price) {
+        this.healthyExtra2Name = name;
+        this.healthyExtra2Price = price;
+    }
+
+    @Override
+    public double itemizeHamburger() {
+        double hamburgerPrice = super.itemizeHamburger();
+        if (this.healthyExtra1Name != null) {
+            hamburgerPrice += this.healthyExtra1Price;
+            System.out.println("Added " + this.healthyExtra1Name + " for an extra " + this.healthyExtra1Price);
         }
-    }
-
-    public boolean isTofu() {
-        return tofu;
-    }
-
-    public void setTofu(boolean tofu) {
-        this.tofu = tofu;
-        if (tofu) {
-            this.price = this.price + .60;
-            System.out.println("Tofu added, new price = " + this.price);
+        if (this.healthyExtra2Name != null) {
+            hamburgerPrice += this.healthyExtra2Price;
+            System.out.println("Added " + this.healthyExtra2Name + " for an extra " + this.healthyExtra2Price);
         }
+        return hamburgerPrice;
     }
 }
